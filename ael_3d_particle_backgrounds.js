@@ -251,7 +251,7 @@
           ];
 
           const effects = [
-            { name: "neon", display: "Neon", color: "#00b4db" },
+            { name: "neon", display: "Neon", color: "#0074FF" },
             { name: "grid", display: "Grid", color: "#667eea" },
             { name: "liquid", display: "Liquid", color: "#f093fb" },
             { name: "cosmic", display: "Cosmic", color: "#4facfe" },
@@ -898,7 +898,7 @@
           ];
           this.currentEffectIndex = 0;
           this.colors = [
-            { primary: "#00b4db", secondary: "#0083b0", name: "Cyan" },
+            { primary: "#0074FF", secondary: "#005fcc", name: "AEL Blue" },
             { primary: "#667eea", secondary: "#764ba2", name: "Purple" },
             { primary: "#f093fb", secondary: "#f5576c", name: "Pink" },
             { primary: "#4facfe", secondary: "#00f2fe", name: "Blue" },

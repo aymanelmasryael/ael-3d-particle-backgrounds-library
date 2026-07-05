@@ -1,8 +1,8 @@
 :root {
-        --primary: #00b4db;
-        --primary-dark: #0083b0;
-        --secondary: #667eea;
-        --accent: #f093fb;
+        --primary: #0074FF;
+        --primary-dark: #005fcc;
+        --secondary: #00b4db;
+        --accent: #667eea;
         --success: #43e97b;
         --warning: #ffd700;
         --danger: #ff4757;
@@ -77,20 +77,51 @@
         will-change: opacity, transform;
         background: radial-gradient(
             circle at 20% 30%,
-            rgba(0, 180, 219, 0.15) 0%,
+            rgba(0, 116, 255, 0.15) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 70%,
-            rgba(102, 126, 234, 0.1) 0%,
+            rgba(0, 116, 255, 0.1) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 40% 80%,
-            rgba(240, 147, 251, 0.1) 0%,
+            rgba(102, 126, 234, 0.1) 0%,
             transparent 50%
           );
         pointer-events: none;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
+      .brand-logo {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        filter: drop-shadow(0 0 8px rgba(0,116,255,.4));
+      }
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .brand-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 1px;
+      }
+      .brand-dev {
+        font-size: 0.85rem;
+        color: #8db7ff;
+        opacity: 0.9;
       }
 
       h1 {
@@ -105,7 +136,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-shadow: 0 10px 30px rgba(0, 180, 219, 0.3);
+        text-shadow: 0 10px 30px rgba(0, 116, 255, 0.3);
         position: relative;
         line-height: 1.2;
         word-wrap: break-word;
@@ -194,12 +225,12 @@
         bottom: 0;
         background: radial-gradient(
             circle at 10% 20%,
-            rgba(0, 180, 219, 0.1) 0%,
+            rgba(0, 116, 255, 0.1) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 90% 80%,
-            rgba(102, 126, 234, 0.05) 0%,
+            rgba(0, 116, 255, 0.05) 0%,
             transparent 50%
           );
         pointer-events: none;
@@ -251,7 +282,7 @@
       .ael-card:hover {
         transform: translateY(-5px);
         border-color: var(--primary);
-        box-shadow: 0 15px 30px rgba(0, 180, 219, 0.2);
+        box-shadow: 0 15px 30px rgba(0, 116, 255, 0.2);
       }
       .ael-card-title {
         font-size: 1.2rem;
@@ -284,7 +315,7 @@
         color: var(--primary);
       }
       .ael-license {
-        background: rgba(0, 180, 219, 0.1);
+        background: rgba(0, 116, 255, 0.1);
         border-left: 4px solid var(--primary);
         padding: 15px;
         border-radius: 0 var(--radius) var(--radius) 0;
@@ -319,7 +350,7 @@
       .search-input:focus {
         outline: none;
         border-color: var(--primary);
-        box-shadow: 0 0 30px rgba(0, 180, 219, 0.3);
+        box-shadow: 0 0 30px rgba(0, 116, 255, 0.3);
       }
       .search-icon {
         position: absolute;
@@ -407,11 +438,11 @@
         font-size: 0.9rem;
       }
       .category-item:hover {
-        background: rgba(0, 180, 219, 0.1);
+        background: rgba(0, 116, 255, 0.1);
         transform: translateX(5px);
       }
       .category-item.active {
-        background: rgba(0, 180, 219, 0.2);
+        background: rgba(0, 116, 255, 0.2);
         border-left: 3px solid var(--primary);
       }
       .category-count {
@@ -458,7 +489,7 @@
       .prompt-card:hover {
         transform: translateY(-8px);
         border-color: var(--primary);
-        box-shadow: var(--shadow), 0 10px 30px rgba(0, 180, 219, 0.2);
+        box-shadow: var(--shadow), 0 10px 30px rgba(0, 116, 255, 0.2);
       }
       @keyframes fadeInUp {
         to {
@@ -542,7 +573,7 @@
         padding: 4px 10px;
         border-radius: 20px;
         font-size: 0.75rem;
-        border: 1px solid rgba(0, 180, 219, 0.3);
+        border: 1px solid rgba(0, 116, 255, 0.3);
         word-wrap: break-word;
       }
       .prompt-actions {
@@ -567,12 +598,12 @@
         word-wrap: break-word;
       }
       .copy-btn {
-        background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         color: white;
       }
       .copy-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 180, 219, 0.4);
+        box-shadow: 0 8px 20px rgba(0, 116, 255, 0.4);
       }
       .copy-btn.copied {
         background: var(--success);
@@ -650,7 +681,7 @@
         font-size: 0.85rem;
       }
       .control-btn:hover {
-        background: rgba(0, 180, 219, 0.1);
+        background: rgba(0, 116, 255, 0.1);
         border-color: var(--primary);
         transform: translateY(-2px);
       }
@@ -708,7 +739,7 @@
       }
       .load-more:hover {
         transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(0, 180, 219, 0.4);
+        box-shadow: 0 15px 30px rgba(0, 116, 255, 0.4);
       }
       .load-more:disabled {
         opacity: 0.5;
