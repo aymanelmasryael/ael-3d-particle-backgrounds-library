@@ -1,0 +1,2634 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <meta
+      name="description"
+      content="Professional 3D Particle Backgrounds Library with 1000+ curated AI prompts for Midjourney, Stable Diffusion, DALL-E and more."
+    />
+    <meta name="author" content="Ayman Elmasry" />
+    <meta name="theme-color" content="#00b4db" />
+    <title>Professional 3D Particle Backgrounds Library - 1000+ Prompts</title>
+
+    <style>
+      :root {
+        --primary: #00b4db;
+        --primary-dark: #0083b0;
+        --secondary: #667eea;
+        --accent: #f093fb;
+        --success: #43e97b;
+        --warning: #ffd700;
+        --danger: #ff4757;
+        --dark: #0a0a0a;
+        --darker: #050505;
+        --light: #e0e0e0;
+        --lighter: #f8f9fa;
+        --card-bg: rgba(30, 30, 46, 0.9);
+        --card-hover: rgba(40, 40, 60, 0.95);
+        --glass: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --radius: 16px;
+        --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        --transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--darker) 0%,
+          var(--dark) 50%,
+          #1a1a2e 100%
+        );
+        color: var(--light);
+        line-height: 1.7;
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header - إصلاح مشكلة خروج النص */
+      header {
+        text-align: center;
+        padding: 40px 0 30px;
+        background: linear-gradient(
+          135deg,
+          rgba(10, 10, 10, 0.9) 0%,
+          rgba(26, 26, 46, 0.8) 100%
+        );
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--glass-border);
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        will-change: opacity, transform;
+        background: radial-gradient(
+            circle at 20% 30%,
+            rgba(0, 180, 219, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(102, 126, 234, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 80%,
+            rgba(240, 147, 251, 0.1) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 15px;
+        background: linear-gradient(
+          45deg,
+          var(--primary),
+          var(--secondary),
+          var(--accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 10px 30px rgba(0, 180, 219, 0.3);
+        position: relative;
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        padding: 0 20px;
+      }
+
+      .subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        color: var(--lighter);
+        margin-bottom: 25px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.9;
+        line-height: 1.4;
+        padding: 0 20px;
+        word-wrap: break-word;
+      }
+
+      .stats {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 25px 0;
+        padding: 0 20px;
+      }
+
+      .stat-item {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        padding: 12px 20px;
+        border-radius: var(--radius);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        min-width: 120px;
+        flex: 1;
+        max-width: 180px;
+        word-wrap: break-word;
+        overflow: hidden;
+      }
+
+      .stat-number {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: block;
+        line-height: 1.2;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--lighter);
+        opacity: 0.8;
+        display: block;
+        line-height: 1.3;
+        margin-top: 5px;
+        word-wrap: break-word;
+      }
+
+      /* باقي الستايلات تبقى كما هي */
+      .ael-system-section {
+        background: linear-gradient(
+          135deg,
+          rgba(10, 10, 20, 0.9) 0%,
+          rgba(26, 26, 46, 0.9) 100%
+        );
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 30px;
+        margin: 40px 0;
+        backdrop-filter: blur(15px);
+        position: relative;
+        overflow: hidden;
+      }
+      .ael-system-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 180, 219, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(102, 126, 234, 0.05) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+      .ael-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .ael-title {
+        font-size: 1.8rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+      }
+      .ael-developer {
+        font-size: 0.9rem;
+        color: var(--lighter);
+        opacity: 0.8;
+      }
+      .ael-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      @media (max-width: 992px) {
+        .ael-content {
+          grid-template-columns: 1fr;
+        }
+      }
+      .ael-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .ael-card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 20px;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+      }
+      .ael-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 15px 30px rgba(0, 180, 219, 0.2);
+      }
+      .ael-card-title {
+        font-size: 1.2rem;
+        color: var(--primary);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ael-card-content {
+        color: var(--lighter);
+        line-height: 1.6;
+      }
+      .ael-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .ael-feature {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        font-size: 0.9rem;
+      }
+      .ael-feature i {
+        color: var(--primary);
+      }
+      .ael-license {
+        background: rgba(0, 180, 219, 0.1);
+        border-left: 4px solid var(--primary);
+        padding: 15px;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        margin-top: 20px;
+        font-size: 0.9rem;
+      }
+
+      /* Navigation & Search */
+      .nav-container {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 15px;
+        margin: 25px 0;
+        backdrop-filter: blur(15px);
+      }
+      .search-box {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto 15px;
+      }
+      .search-input {
+        width: 100%;
+        padding: 15px 45px 15px 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--glass-border);
+        border-radius: 50px;
+        color: var(--light);
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+      .search-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 30px rgba(0, 180, 219, 0.3);
+      }
+      .search-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary);
+        pointer-events: none;
+      }
+      .filters-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .filter-group {
+        flex: 1;
+        min-width: 150px;
+      }
+      .filter-label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--lighter);
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+      .filter-select {
+        width: 100%;
+        padding: 10px 12px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        color: var(--light);
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.9rem;
+      }
+      .filter-select:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      /* Main Content Grid */
+      .content-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 25px;
+        margin: 35px 0;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 20px;
+        backdrop-filter: blur(15px);
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+      .sidebar-section {
+        margin-bottom: 25px;
+      }
+      .sidebar-title {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        color: var(--primary);
+        border-bottom: 1px solid var(--glass-border);
+        padding-bottom: 8px;
+      }
+      .category-list {
+        list-style: none;
+      }
+      .category-item {
+        padding: 10px 12px;
+        margin-bottom: 6px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+      }
+      .category-item:hover {
+        background: rgba(0, 180, 219, 0.1);
+        transform: translateX(5px);
+      }
+      .category-item.active {
+        background: rgba(0, 180, 219, 0.2);
+        border-left: 3px solid var(--primary);
+      }
+      .category-count {
+        background: var(--primary);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.75rem;
+      }
+
+      /* Prompts Grid */
+      .prompts-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+      }
+      .prompt-card {
+        background: var(--card-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 20px;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.5s ease forwards;
+      }
+      .prompt-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+      .prompt-card:hover::before {
+        transform: scaleX(1);
+      }
+      .prompt-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow), 0 10px 30px rgba(0, 180, 219, 0.2);
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+      }
+      .prompt-title {
+        font-size: 1.2rem;
+        color: var(--primary);
+        font-weight: 700;
+        line-height: 1.3;
+        flex: 1;
+        word-wrap: break-word;
+      }
+      .prompt-rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.9rem;
+        color: var(--warning);
+      }
+      .prompt-id {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        margin-left: 12px;
+      }
+      .prompt-thumbnail {
+        width: 100%;
+        height: 120px;
+        border-radius: 10px;
+        margin: 12px 0;
+        object-fit: cover;
+        background: linear-gradient(135deg, var(--dark), #1a1a2e);
+      }
+      .prompt-content {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        border-radius: 12px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin: 12px 0;
+        max-height: 150px;
+        overflow-y: auto;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        word-wrap: break-word;
+      }
+      .prompt-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        font-size: 0.8rem;
+        color: var(--lighter);
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .prompt-platforms {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .platform-badge {
+        background: rgba(0, 131, 176, 0.2);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        border: 1px solid rgba(0, 180, 219, 0.3);
+        word-wrap: break-word;
+      }
+      .prompt-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .action-btn {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        position: relative;
+        word-wrap: break-word;
+      }
+      .copy-btn {
+        background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+        color: white;
+      }
+      .copy-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 180, 219, 0.4);
+      }
+      .copy-btn.copied {
+        background: var(--success);
+      }
+      .favorite-btn {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--light);
+        border: 1px solid var(--glass-border);
+      }
+      .favorite-btn:hover {
+        background: rgba(255, 215, 0, 0.1);
+        border-color: var(--warning);
+        color: var(--warning);
+      }
+      .favorite-btn.active {
+        background: rgba(255, 215, 0, 0.2);
+        border-color: var(--warning);
+        color: var(--warning);
+      }
+      .prompt-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--glass-border);
+        font-size: 0.75rem;
+        color: var(--lighter);
+        opacity: 0.7;
+      }
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      /* Preview Section */
+      .preview-section {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        padding: 25px;
+        margin: 40px 0;
+        backdrop-filter: blur(15px);
+      }
+      .preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .preview-title {
+        font-size: 1.5rem;
+        color: var(--primary);
+        font-weight: 700;
+      }
+      .preview-controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .control-btn {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--glass-border);
+        color: var(--primary);
+        padding: 10px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+      .control-btn:hover {
+        background: rgba(0, 180, 219, 0.1);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+      canvas {
+        width: 100%;
+        height: 400px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, #0a0a15 0%, #151525 100%);
+        border: 1px solid var(--glass-border);
+        display: block;
+      }
+      .preview-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        color: var(--lighter);
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 50px;
+        border-top: 1px solid var(--glass-border);
+        color: var(--lighter);
+        background: rgba(10, 10, 10, 0.8);
+      }
+
+      /* Load More */
+      .load-more-container {
+        text-align: center;
+        margin: 35px 0;
+      }
+      .load-more {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        border: none;
+        padding: 14px 35px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .load-more:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(0, 180, 219, 0.4);
+      }
+      .load-more:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        color: var(--primary);
+        padding: 10px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-bottom: 15px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* Empty State */
+      .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--lighter);
+        opacity: 0.7;
+      }
+      .empty-state i {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--primary);
+      }
+
+      /* Notifications */
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--primary);
+        border-radius: var(--radius);
+        padding: 15px 20px;
+        backdrop-filter: blur(15px);
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        max-width: 350px;
+        word-wrap: break-word;
+      }
+      .notification.show {
+        transform: translateX(0);
+      }
+      .notification.error {
+        border-color: var(--danger);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+        }
+        .prompts-container {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+      }
+      @media (max-width: 992px) {
+        .container {
+          padding: 15px;
+        }
+        .prompts-container {
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+      }
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: flex;
+        }
+        .sidebar {
+          display: none;
+        }
+        .sidebar.active {
+          display: block;
+        }
+        .prompts-container {
+          grid-template-columns: 1fr;
+        }
+        .prompt-actions {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 480px) {
+        .container {
+          padding: 10px;
+        }
+        .prompt-card {
+          padding: 12px;
+        }
+        .preview-section {
+          padding: 15px;
+        }
+        canvas {
+          height: 250px;
+        }
+        .preview-controls {
+          flex-direction: column;
+        }
+        .stat-item {
+          min-width: 100px;
+        }
+      }
+
+      /* Touch Device Optimizations */
+      @media (hover: none) and (pointer: coarse) {
+        .prompt-card:hover,
+        .category-item:hover,
+        .action-btn:hover,
+        .control-btn:hover,
+        .load-more:hover {
+          transform: none;
+        }
+        .prompt-card:active {
+          transform: scale(0.98);
+        }
+      }
+
+      /* Scrollbar Styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border-radius: 4px;
+      }
+
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .prompt-card:hover,
+        .category-item:hover,
+        .action-btn:hover,
+        .control-btn:hover,
+        .load-more:hover {
+          transform: none;
+        }
+      }
+    
+        .ael-icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            vertical-align: -0.125em;
+            overflow: hidden;
+        }
+        .ael-heart-filled {
+            fill: #ff4757;
+        }
+
+    </style>
+  
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.aymanelmasry.com/prompts">
+    <link rel="llms-txt" href="/llms.txt">
+
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Professional 3D Particle Backgrounds Library - 1000+ Prompts",
+        "description": "Professional 3D Particle Backgrounds Library with 1000+ curated AI prompts for Midjourney, Stable Diffusion, DALL-E and more.",
+        "author": {
+            "@type": "Person",
+            "name": "Ayman Elmasry",
+            "url": "https://www.aymanelmasry.com"
+        }
+    }
+    </script>
+
+</head>
+  <body><svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="ael-badge-check" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></symbol><symbol id="ael-balance-scale" viewBox="0 0 512 512"><path d="M384 32H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H320 128c-17.7 0-32-14.3-32-32s14.3-32 32-32H288V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32H256c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32zm55.6 288H584.4L512 195.8 439.6 320zM512 416c-62.9 0-115.2-34-126-78.9c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416zM126.8 195.8L54.4 320H199.3L126.8 195.8zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8l95.2 163.2c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1z"/></symbol><symbol id="ael-bars" viewBox="0 0 512 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></symbol><symbol id="ael-bolt" viewBox="0 0 512 512"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z"/></symbol><symbol id="ael-bullseye" viewBox="0 0 512 512"><path d="M448 256A192 192 0 1 0 64 256a192 192 0 1 0 384 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 80a80 80 0 1 0 0-160 80 80 0 1 0 0 160zm0-224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zM224 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></symbol><symbol id="ael-calendar" viewBox="0 0 512 512"><path d="M96 32V64H48C21.5 64 0 85.5 0 112v48H448V112c0-26.5-21.5-48-48-48H352V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H160V32c0-17.7-14.3-32-32-32S96 14.3 96 32zM448 192H0V464c0 26.5 21.5 48 48 48H400c26.5 0 48-21.5 48-48V192z"/></symbol><symbol id="ael-check" viewBox="0 0 512 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></symbol><symbol id="ael-code" viewBox="0 0 512 512"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></symbol><symbol id="ael-cogs" viewBox="0 0 512 512"><path d="M308.5 135.3c7.1-6.3 9.9-16.2 6.2-25c-2.3-5.3-4.8-10.5-7.6-15.5L304 89.4c-3-5-6.3-9.9-9.8-14.6c-5.7-7.6-15.7-10.1-24.7-7.1l-28.2 9.3c-10.7-8.8-23-16-36.2-20.9L199 27.1c-1.9-9.3-9.1-16.7-18.5-17.8C173.9 8.4 167.2 8 160.4 8h-.7c-6.8 0-13.5 .4-20.1 1.2c-9.4 1.1-16.6 8.6-18.5 17.8L115 56.1c-13.3 5-25.5 12.1-36.2 20.9L50.5 67.8c-9-3-19-.5-24.7 7.1c-3.5 4.7-6.8 9.6-9.9 14.6l-3 5.3c-2.8 5-5.3 10.2-7.6 15.6c-3.7 8.7-.9 18.6 6.2 25l22.2 19.8C32.6 161.9 32 168.9 32 176s.6 14.1 1.7 20.9L11.5 216.7c-7.1 6.3-9.9 16.2-6.2 25c2.3 5.3 4.8 10.5 7.6 15.6l3 5.2c3 5.1 6.3 9.9 9.9 14.6c5.7 7.6 15.7 10.1 24.7 7.1l28.2-9.3c10.7 8.8 23 16 36.2 20.9l6.1 29.1c1.9 9.3 9.1 16.7 18.5 17.8c6.7 .8 13.5 1.2 20.4 1.2s13.7-.4 20.4-1.2c9.4-1.1 16.6-8.6 18.5-17.8l6.1-29.1c13.3-5 25.5-12.1 36.2-20.9l28.2 9.3c9 3 19 .5 24.7-7.1c3.5-4.7 6.8-9.5 9.8-14.6l3.1-5.4c2.8-5 5.3-10.2 7.6-15.5c3.7-8.7 .9-18.6-6.2-25l-22.2-19.8c1.1-6.8 1.7-13.8 1.7-20.9s-.6-14.1-1.7-20.9l22.2-19.8zM112 176a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM504.7 500.5c6.3 7.1 16.2 9.9 25 6.2c5.3-2.3 10.5-4.8 15.5-7.6l5.4-3.1c5-3 9.9-6.3 14.6-9.8c7.6-5.7 10.1-15.7 7.1-24.7l-9.3-28.2c8.8-10.7 16-23 20.9-36.2l29.1-6.1c9.3-1.9 16.7-9.1 17.8-18.5c.8-6.7 1.2-13.5 1.2-20.4s-.4-13.7-1.2-20.4c-1.1-9.4-8.6-16.6-17.8-18.5L583.9 307c-5-13.3-12.1-25.5-20.9-36.2l9.3-28.2c3-9 .5-19-7.1-24.7c-4.7-3.5-9.6-6.8-14.6-9.9l-5.3-3c-5-2.8-10.2-5.3-15.6-7.6c-8.7-3.7-18.6-.9-25 6.2l-19.8 22.2c-6.8-1.1-13.8-1.7-20.9-1.7s-14.1 .6-20.9 1.7l-19.8-22.2c-6.3-7.1-16.2-9.9-25-6.2c-5.3 2.3-10.5 4.8-15.6 7.6l-5.2 3c-5.1 3-9.9 6.3-14.6 9.9c-7.6 5.7-10.1 15.7-7.1 24.7l9.3 28.2c-8.8 10.7-16 23-20.9 36.2L315.1 313c-9.3 1.9-16.7 9.1-17.8 18.5c-.8 6.7-1.2 13.5-1.2 20.4s.4 13.7 1.2 20.4c1.1 9.4 8.6 16.6 17.8 18.5l29.1 6.1c5 13.3 12.1 25.5 20.9 36.2l-9.3 28.2c-3 9-.5 19 7.1 24.7c4.7 3.5 9.5 6.8 14.6 9.8l5.4 3.1c5 2.8 10.2 5.3 15.5 7.6c8.7 3.7 18.6 .9 25-6.2l19.8-22.2c6.8 1.1 13.8 1.7 20.9 1.7s14.1-.6 20.9-1.7l19.8 22.2zM464 304a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></symbol><symbol id="ael-copy" viewBox="0 0 512 512"><path d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"/></symbol><symbol id="ael-database" viewBox="0 0 512 512"><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></symbol><symbol id="ael-download" viewBox="0 0 512 512"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></symbol><symbol id="ael-heart" viewBox="0 0 512 512"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></symbol><symbol id="ael-layer-group" viewBox="0 0 512 512"><path d="M264.5 5.2c14.9-6.9 32.1-6.9 47 0l218.6 101c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 149.8C37.4 145.8 32 137.3 32 128s5.4-17.9 13.9-21.8L264.5 5.2zM476.9 209.6l53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 277.8C37.4 273.8 32 265.3 32 256s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0l152-70.2zm-152 198.2l152-70.2 53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 405.8C37.4 401.8 32 393.3 32 384s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0z"/></symbol><symbol id="ael-magic" viewBox="0 0 512 512"><path d="M234.7 42.7L197 56.8c-3 1.1-5 4-5 7.2s2 6.1 5 7.2l37.7 14.1L248.8 123c1.1 3 4 5 7.2 5s6.1-2 7.2-5l14.1-37.7L315 71.2c3-1.1 5-4 5-7.2s-2-6.1-5-7.2L277.3 42.7 263.2 5c-1.1-3-4-5-7.2-5s-6.1 2-7.2 5L234.7 42.7zM46.1 395.4c-18.7 18.7-18.7 49.1 0 67.9l34.6 34.6c18.7 18.7 49.1 18.7 67.9 0L529.9 116.5c18.7-18.7 18.7-49.1 0-67.9L495.3 14.1c-18.7-18.7-49.1-18.7-67.9 0L46.1 395.4zM484.6 82.6l-105 105-23.3-23.3 105-105 23.3 23.3zM7.5 117.2C3 118.9 0 123.2 0 128s3 9.1 7.5 10.8L64 160l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L128 160l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L128 96 106.8 39.5C105.1 35 100.8 32 96 32s-9.1 3-10.8 7.5L64 96 7.5 117.2zm352 256c-4.5 1.7-7.5 6-7.5 10.8s3 9.1 7.5 10.8L416 416l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L480 416l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L480 352l-21.2-56.5c-1.7-4.5-6-7.5-10.8-7.5s-9.1 3-10.8 7.5L416 352l-56.5 21.2z"/></symbol><symbol id="ael-palette" viewBox="0 0 512 512"><path d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3H344c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/></symbol><symbol id="ael-pause" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></symbol><symbol id="ael-play" viewBox="0 0 512 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></symbol><symbol id="ael-plus" viewBox="0 0 512 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></symbol><symbol id="ael-redo" viewBox="0 0 512 512"><path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></symbol><symbol id="ael-search" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></symbol><symbol id="ael-shapes" viewBox="0 0 512 512"><path d="M315.4 15.5C309.7 5.9 299.2 0 288 0s-21.7 5.9-27.4 15.5l-96 160c-5.9 9.9-6.1 22.2-.4 32.2s16.3 16.2 27.8 16.2H384c11.5 0 22.2-6.2 27.8-16.2s5.5-22.3-.4-32.2l-96-160zM288 312V456c0 22.1 17.9 40 40 40H472c22.1 0 40-17.9 40-40V312c0-22.1-17.9-40-40-40H328c-22.1 0-40 17.9-40 40zM128 512a128 128 0 1 0 0-256 128 128 0 1 0 0 256z"/></symbol><symbol id="ael-sitemap" viewBox="0 0 512 512"><path d="M208 80c0-26.5 21.5-48 48-48h64c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-8v40H464c30.9 0 56 25.1 56 56v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H464c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V288c0-4.4-3.6-8-8-8H312v40h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H256c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V280H112c-4.4 0-8 3.6-8 8v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V368c0-26.5 21.5-48 48-48h8V288c0-30.9 25.1-56 56-56H264V192h-8c-26.5 0-48-21.5-48-48V80z"/></symbol><symbol id="ael-star" viewBox="0 0 512 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></symbol><symbol id="ael-sync-alt" viewBox="0 0 512 512"><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H352c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V80c0-17.7-14.3-32-32-32s-32 14.3-32 32v35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V432c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H160c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></symbol><symbol id="ael-tachometer-alt" viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM256 416c35.3 0 64-28.7 64-64c0-17.4-6.9-33.1-18.1-44.6L366 161.7c5.3-12.1-.2-26.3-12.3-31.6s-26.3 .2-31.6 12.3L257.9 288c-.6 0-1.3 0-1.9 0c-35.3 0-64 28.7-64 64s28.7 64 64 64zM176 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM96 288a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm352-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></symbol><symbol id="ael-tags" viewBox="0 0 512 512"><path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></symbol><symbol id="ael-thumbs-up" viewBox="0 0 512 512"><path d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z"/></symbol><symbol id="ael-times" viewBox="0 0 512 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></symbol></svg>
+    <header>
+      <div class="container">
+        <h1>Professional 3D Particle Backgrounds Library</h1>
+        <p class="subtitle">
+          The largest collection of 3D background prompts - 1000+ professional
+          prompts updated until 2025
+        </p>
+
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Professional Prompts</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Specialized Categories</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Supported Platforms</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Different Effects</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- AEL Prompt Lifecycle System Section -->
+      <section class="ael-system-section">
+        <div class="ael-header">
+          <h2 class="ael-title">AEL Prompt Lifecycle System™</h2>
+          <div class="ael-developer">Developed by Ayman Elmasry</div>
+        </div>
+
+        <div class="ael-content">
+          <div class="ael-column">
+            <div class="ael-card">
+              <h3 class="ael-card-title">
+                <svg class="ael-icon" ><use href="#ael-sitemap"/></svg>
+                Overview
+              </h3>
+              <div class="ael-card-content">
+                The AEL Prompt Lifecycle System™ is a professional framework
+                created by Ayman Elmasry to formalize and document AI-assisted
+                creative processes. It establishes a unified structure for
+                prompt definition, metadata registration, and intellectual
+                property protection — bridging the gap between creative design
+                and technical execution.
+              </div>
+            </div>
+
+            <div class="ael-card">
+              <h3 class="ael-card-title">
+                <svg class="ael-icon" ><use href="#ael-layer-group"/></svg>
+                Core Concept
+              </h3>
+              <div class="ael-card-content">
+                Every prompt becomes an Executable Entity, containing three
+                lifecycle layers:
+                <ul style="margin-top: 10px; padding-left: 20px">
+                  <li>
+                    <strong>Definition Layer</strong> — Defines creative and
+                    technical intent.
+                  </li>
+                  <li>
+                    <strong>Analytical Layer</strong> — Interprets and
+                    structures the data for AI systems.
+                  </li>
+                  <li>
+                    <strong>Execution Layer</strong> — Generates visual or
+                    code-based output according to the defined logic.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="ael-column">
+            <div class="ael-card">
+              <h3 class="ael-card-title">
+                <svg class="ael-icon" ><use href="#ael-cogs"/></svg>
+                System Features
+              </h3>
+              <div class="ael-card-content">
+                <div class="ael-features">
+                  <div class="ael-feature">
+                    <svg class="ael-icon" ><use href="#ael-database"/></svg>
+                    <span>Automatic metadata generation</span>
+                  </div>
+                  <div class="ael-feature">
+                    <svg class="ael-icon" ><use href="#ael-code"/></svg>
+                    <span>JSON & HTML dual-output</span>
+                  </div>
+                  <div class="ael-feature">
+                    <svg class="ael-icon" ><use href="#ael-tags"/></svg>
+                    <span>Category-based naming</span>
+                  </div>
+                  <div class="ael-feature">
+                    <svg class="ael-icon" ><use href="#ael-bolt"/></svg>
+                    <span>Text-to-image & text-to-code</span>
+                  </div>
+                  <div class="ael-feature">
+                    <svg class="ael-icon" ><use href="#ael-balance-scale"/></svg>
+                    <span>Digital licensing embedded</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ael-card">
+              <h3 class="ael-card-title">
+                <svg class="ael-icon" ><use href="#ael-bullseye"/></svg>
+                Goal
+              </h3>
+              <div class="ael-card-content">
+                To create a global standard for prompt engineering as
+                intellectual property — enabling designers, developers, and AI
+                artists to generate, license, and archive their creations under
+                a transparent, traceable system.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ael-license">
+          <strong>License:</strong> © 2025 Ayman Elmasry — Original AI-assisted
+          framework and design system. Commercial use allowed with attribution.
+          Unauthorized redistribution is prohibited.
+        </div>
+      </section>
+
+      <div class="nav-container">
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search prompts (Neon, Grid, Liquid, Cosmic, Magnetic...)"
+            aria-label="Search prompts"
+          />
+          <svg class="ael-icon search-icon" aria-hidden="true"><use href="#ael-search"/></svg>
+        </div>
+
+        <div class="filters-row">
+          <div class="filter-group">
+            <label class="filter-label" for="platformFilter">Platform</label>
+            <select
+              class="filter-select"
+              id="platformFilter"
+              aria-label="Filter by platform"
+            >
+              <option value="all">All Platforms</option>
+              <option value="Midjourney">Midjourney</option>
+              <option value="Stable Diffusion">Stable Diffusion</option>
+              <option value="DALL-E 3">DALL-E 3</option>
+              <option value="Runway ML">Runway ML</option>
+              <option value="Leonardo AI">Leonardo AI</option>
+              <option value="Kaiber">Kaiber</option>
+              <option value="ComfyUI">ComfyUI</option>
+              <option value="ClipDrop">ClipDrop</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="effectFilter">Effect Type</label>
+            <select
+              class="filter-select"
+              id="effectFilter"
+              aria-label="Filter by effect"
+            >
+              <option value="all">All Effects</option>
+              <option value="neon">Neon</option>
+              <option value="grid">Grid</option>
+              <option value="liquid">Liquid</option>
+              <option value="cosmic">Cosmic</option>
+              <option value="matrix">Matrix</option>
+              <option value="wave">Wave</option>
+              <option value="magnetic">Magnetic</option>
+              <option value="holographic">Holographic</option>
+              <option value="quantum">Quantum</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="resolutionFilter"
+              >Resolution</label
+            >
+            <select
+              class="filter-select"
+              id="resolutionFilter"
+              aria-label="Filter by resolution"
+            >
+              <option value="all">All Resolutions</option>
+              <option value="8K">8K</option>
+              <option value="4K">4K</option>
+              <option value="2K">2K</option>
+              <option value="1080p">1080p</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="sortFilter">Sort By</label>
+            <select
+              class="filter-select"
+              id="sortFilter"
+              aria-label="Sort prompts"
+            >
+              <option value="newest">Newest First</option>
+              <option value="popular">Most Popular</option>
+              <option value="rating">Highest Rated</option>
+              <option value="az">A-Z</option>
+              <option value="za">Z-A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        aria-label="Toggle categories menu"
+      >
+        <svg class="ael-icon" ><use href="#ael-bars"/></svg>
+        Show Categories
+      </button>
+
+      <div class="content-grid">
+        <aside
+          class="sidebar"
+          id="sidebar"
+          role="complementary"
+          aria-label="Filter categories"
+        >
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Categories</h3>
+            <ul class="category-list">
+              <li class="category-item active" data-category="all">
+                <span>All Prompts</span>
+                <span class="category-count">1000</span>
+              </li>
+              <li class="category-item" data-category="Technology Backgrounds">
+                <span>Technology Backgrounds</span>
+                <span class="category-count">156</span>
+              </li>
+              <li class="category-item" data-category="Neon Effects">
+                <span>Neon Effects</span>
+                <span class="category-count">128</span>
+              </li>
+              <li class="category-item" data-category="Space Backgrounds">
+                <span>Space Backgrounds</span>
+                <span class="category-count">94</span>
+              </li>
+              <li class="category-item" data-category="3D Grid Systems">
+                <span>3D Grid Systems</span>
+                <span class="category-count">112</span>
+              </li>
+              <li class="category-item" data-category="Liquid Effects">
+                <span>Liquid Effects</span>
+                <span class="category-count">87</span>
+              </li>
+              <li class="category-item" data-category="Particle Systems">
+                <span>Particle Systems</span>
+                <span class="category-count">135</span>
+              </li>
+              <li class="category-item" data-category="Holograms">
+                <span>Holograms</span>
+                <span class="category-count">76</span>
+              </li>
+              <li class="category-item" data-category="Quantum Effects">
+                <span>Quantum Effects</span>
+                <span class="category-count">63</span>
+              </li>
+              <li class="category-item" data-category="Game Backgrounds">
+                <span>Game Backgrounds</span>
+                <span class="category-count">89</span>
+              </li>
+              <li class="category-item" data-category="UI Interfaces">
+                <span>UI Interfaces</span>
+                <span class="category-count">78</span>
+              </li>
+              <li class="category-item" data-category="Advanced Visual Effects">
+                <span>Advanced Visual Effects</span>
+                <span class="category-count">82</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Supported Platforms</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <span class="platform-badge">Midjourney</span>
+              <span class="platform-badge">Stable Diffusion</span>
+              <span class="platform-badge">DALL-E 3</span>
+              <span class="platform-badge">Runway ML</span>
+              <span class="platform-badge">Leonardo AI</span>
+              <span class="platform-badge">Kaiber</span>
+              <span class="platform-badge">ComfyUI</span>
+              <span class="platform-badge">ClipDrop</span>
+            </div>
+          </div>
+        </aside>
+
+        <main>
+          <div
+            class="prompts-container"
+            id="promptsContainer"
+            role="main"
+            aria-live="polite"
+          >
+            <!-- Prompts loaded dynamically -->
+          </div>
+
+          <div class="empty-state" id="emptyState" style="display: none">
+            <svg class="ael-icon" ><use href="#ael-search"/></svg>
+            <h3>No prompts found</h3>
+            <p>Try adjusting your filters or search terms</p>
+          </div>
+
+          <div class="load-more-container">
+            <button
+              class="load-more"
+              id="loadMore"
+              aria-label="Load more prompts"
+            >
+              <svg class="ael-icon" ><use href="#ael-plus"/></svg>
+              Load More Prompts
+            </button>
+          </div>
+        </main>
+      </div>
+
+      <div class="preview-section" aria-label="Live particle preview">
+        <div class="preview-header">
+          <h2 class="preview-title">Live Preview - 3D Particle System</h2>
+          <div class="preview-controls">
+            <button
+              class="control-btn"
+              id="playPause"
+              aria-label="Toggle animation"
+            >
+              <svg class="ael-icon" ><use href="#ael-pause"/></svg> Pause
+            </button>
+            <button
+              class="control-btn"
+              id="changeEffect"
+              aria-label="Change particle effect"
+            >
+              <svg class="ael-icon" ><use href="#ael-sync-alt"/></svg> Change Effect
+            </button>
+            <button
+              class="control-btn"
+              id="changeColor"
+              aria-label="Change color scheme"
+            >
+              <svg class="ael-icon" ><use href="#ael-palette"/></svg> Change Colors
+            </button>
+            <button
+              class="control-btn"
+              id="resetParticles"
+              aria-label="Reset particle system"
+            >
+              <svg class="ael-icon" ><use href="#ael-redo"/></svg> Reset
+            </button>
+          </div>
+        </div>
+        <canvas
+          id="particleCanvas"
+          aria-label="Interactive particle visualization"
+        ></canvas>
+        <div class="preview-stats">
+          <div class="stat">
+            <svg class="ael-icon" ><use href="#ael-shapes"/></svg>
+            <span id="particleCount">Particles: 0</span>
+          </div>
+          <div class="stat">
+            <svg class="ael-icon" ><use href="#ael-tachometer-alt"/></svg>
+            <span id="fpsCounter">FPS: 0</span>
+          </div>
+          <div class="stat">
+            <svg class="ael-icon" ><use href="#ael-magic"/></svg>
+            <span id="effectName">Effect: Neon Grid</span>
+          </div>
+          <div class="stat">
+            <svg class="ael-icon" ><use href="#ael-palette"/></svg>
+            <span id="colorName">Colors: Cyan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>© 2025 Ayman Elmasry. All rights reserved.</p>
+        <p>
+          This digital artwork and its source code are original creations.
+          Licensed for personal and commercial use under Ayman Elmasry Digital
+          License. Unauthorized redistribution is prohibited.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div
+      class="notification"
+      id="notification"
+      role="alert"
+      aria-live="assertive"
+    ></div>
+
+    <script>
+      // ============================================================================
+      // ENHANCED PROFESSIONAL 3D PARTICLE BACKGROUND PROMPT LIBRARY
+      // Version: 4.0.0 | No Repetition - Fully Unique Prompts
+      // ============================================================================
+
+      class UniquePromptGenerator {
+        constructor() {
+          // قاعدة مصطلحات موسعة جداً لمنع التكرار
+          this.enhancedTechnicalTerms = [
+            // مصطلحات فيزيائية متقدمة
+            "plasma dynamics",
+            "electromagnetic spectrum",
+            "quantum entanglement",
+            "string theory",
+            "relativity effects",
+            "thermodynamic systems",
+            "fluid mechanics",
+            "aerodynamic flow",
+            "crystal lattice",
+            "magnetic resonance",
+            "particle acceleration",
+            "wave interference",
+
+            // مصطلحات رياضية وحسابية
+            "fractal geometry",
+            "algorithmic patterns",
+            "topological surfaces",
+            "vector fields",
+            "tensor networks",
+            "probability distributions",
+            "chaos theory",
+            "complex systems",
+
+            // مصطلحات بيولوجية وعضوية
+            "neural pathways",
+            "cellular structures",
+            "DNA sequencing",
+            "ecosystem networks",
+            "biological membranes",
+            "protein folding",
+            "microbial colonies",
+            "neural networks",
+
+            // مصطلحات كيميائية
+            "molecular bonds",
+            "crystal formations",
+            "polymer chains",
+            "nanotechnology",
+            "atomic structures",
+            "chemical reactions",
+            "catalytic processes",
+            "quantum chemistry",
+
+            // مصطلحات فلكية وكونية
+            "dark matter",
+            "black holes",
+            "supernova remnants",
+            "planetary systems",
+            "galactic clusters",
+            "cosmic strings",
+            "nebula formations",
+            "interstellar clouds",
+
+            // مصطلحات تقنية متقدمة
+            "blockchain networks",
+            "quantum circuits",
+            "nanobot swarms",
+            "biometric patterns",
+            "cybernetic interfaces",
+            "neural architectures",
+            "quantum computing",
+            "AI algorithms",
+
+            // مصطلحات فنية وتصميم
+            "generative art",
+            "procedural generation",
+            "parametric design",
+            "kinetic sculpture",
+            "light refraction",
+            "material science",
+            "digital fabrication",
+            "computational design",
+          ];
+
+          // أنماط تصميم موسعة
+          this.enhancedStyles = [
+            // أنماط واقعية
+            "photorealistic",
+            "hyperdetailed",
+            "ultrarealistic",
+            "lifelike",
+            "high-fidelity",
+
+            // أنماط سينمائية
+            "blockbuster",
+            "Hollywood",
+            "IMAX",
+            "anamorphic",
+            "cinematic",
+
+            // أنماط فنية
+            "impressionist",
+            "expressionist",
+            "cubist",
+            "surrealist",
+            "abstract expressionist",
+            "pop art",
+            "art deco",
+            "bauhaus",
+            "minimalist",
+            "conceptual",
+
+            // أنماط تقنية
+            "wireframe",
+            "blueprint",
+            "schematic",
+            "technical drawing",
+            "scientific illustration",
+            "infographic",
+            "data art",
+            "code visualization",
+            "algorithmic art",
+
+            // أنماط ثقافية
+            "japanese minimalism",
+            "scandinavian design",
+            "brutalist",
+            "gothic",
+            "renaissance",
+            "baroque",
+            "art nouveau",
+            "biophilic",
+            "sustainable design",
+
+            // أنماط مستقبلية
+            "biopunk",
+            "nanopunk",
+            "atompunk",
+            "steampunk",
+            "solarpunk",
+            "raypunk",
+            "nowpunk",
+          ];
+
+          // هياكل نحوية متنوعة
+          this.sentenceStructures = [
+            (effect, term, style, res) =>
+              `Professional ${res} ${effect} ${term} visualization in ${style} style`,
+            (effect, term, style, res) =>
+              `${style} ${res} artwork featuring ${effect} ${term} systems`,
+            (effect, term, style, res) =>
+              `Ultra-detailed ${res} ${effect} composition with ${term} and ${style} aesthetic`,
+            (effect, term, style, res) =>
+              `Cinematic ${res} ${effect} scene showing intricate ${term} in ${style}`,
+            (effect, term, style, res) =>
+              `Technical ${res} ${effect} diagram of ${term} with ${style} rendering`,
+            (effect, term, style, res) =>
+              `Advanced ${res} ${effect} simulation of ${term} using ${style} approach`,
+            (effect, term, style, res) =>
+              `Innovative ${res} ${effect} representation of ${term} in ${style} manner`,
+          ];
+
+          this.usedCombinations = new Set();
+        }
+
+        generateUniquePrompt(effect, resolution) {
+          let attempts = 0;
+          let prompt;
+          let combinationKey;
+
+          do {
+            const technicalTerm = this.getRandomElement(
+              this.enhancedTechnicalTerms
+            );
+            const style = this.getRandomElement(this.enhancedStyles);
+            const sentenceStructure = this.getRandomElement(
+              this.sentenceStructures
+            );
+
+            prompt = sentenceStructure(
+              effect.display,
+              technicalTerm,
+              style,
+              resolution
+            );
+            combinationKey = `${effect.name}-${technicalTerm}-${style}-${resolution}`;
+
+            attempts++;
+
+            if (attempts > 50) {
+              // إذا فشلنا في إيجاد تركيبة فريدة بعد 50 محاولة
+              prompt = this.createFallbackPrompt(
+                effect,
+                resolution,
+                technicalTerm,
+                style
+              );
+              break;
+            }
+          } while (this.usedCombinations.has(combinationKey));
+
+          this.usedCombinations.add(combinationKey);
+          return prompt;
+        }
+
+        createFallbackPrompt(effect, resolution, technicalTerm, style) {
+          const fallbackStructures = [
+            `Unique ${resolution} ${effect.display} ${technicalTerm} implementation with ${style} design`,
+            `Original ${resolution} ${effect.display} interpretation of ${technicalTerm} in ${style} style`,
+            `Exclusive ${resolution} ${effect.display} ${technicalTerm} visualization using ${style} techniques`,
+          ];
+          return this.getRandomElement(fallbackStructures);
+        }
+
+        getRandomElement(array) {
+          return array[Math.floor(Math.random() * array.length)];
+        }
+      }
+
+      class EnhancedPromptLibrary {
+        constructor() {
+          this.uniqueGenerator = new UniquePromptGenerator();
+          this.prompts = this.generateProfessionalPrompts();
+          this.filteredPrompts = [...this.prompts];
+          this.visibleCount = 12;
+          this.currentFilters = {
+            platform: "all",
+            effect: "all",
+            resolution: "all",
+            sort: "newest",
+            search: "",
+            category: "all",
+          };
+          this.favorites = this.loadFavorites();
+          this.init();
+        }
+
+        generateProfessionalPrompts() {
+          const prompts = [];
+          const platforms = [
+            ["Midjourney"],
+            ["Stable Diffusion"],
+            ["DALL-E 3"],
+            ["Runway ML"],
+            ["Leonardo AI"],
+            ["Kaiber"],
+            ["ComfyUI"],
+            ["ClipDrop"],
+            ["Midjourney", "Stable Diffusion"],
+            ["Leonardo AI", "Runway ML"],
+          ];
+
+          const effects = [
+            { name: "neon", display: "Neon", color: "#00b4db" },
+            { name: "grid", display: "Grid", color: "#667eea" },
+            { name: "liquid", display: "Liquid", color: "#f093fb" },
+            { name: "cosmic", display: "Cosmic", color: "#4facfe" },
+            { name: "matrix", display: "Matrix", color: "#43e97b" },
+            { name: "wave", display: "Wave", color: "#ffd700" },
+            { name: "magnetic", display: "Magnetic", color: "#ff6b6b" },
+            { name: "holographic", display: "Holographic", color: "#a8e6cf" },
+            { name: "quantum", display: "Quantum", color: "#ffafcc" },
+            { name: "cyberpunk", display: "Cyberpunk", color: "#ff0a78" },
+            { name: "sci-fi", display: "Sci-Fi", color: "#9d4edd" },
+            { name: "futuristic", display: "Futuristic", color: "#00bbf9" },
+            { name: "organic", display: "Organic", color: "#38b000" },
+            { name: "abstract", display: "Abstract", color: "#ff5400" },
+            { name: "minimal", display: "Minimal", color: "#8ecae6" },
+            // تأثيرات إضافية لمنع التكرار
+            { name: "plasma", display: "Plasma", color: "#ff6b6b" },
+            { name: "crystal", display: "Crystal", color: "#a8e6cf" },
+            { name: "fractal", display: "Fractal", color: "#ffafcc" },
+            { name: "neural", display: "Neural", color: "#9d4edd" },
+            { name: "atomic", display: "Atomic", color: "#4facfe" },
+          ];
+
+          const categories = [
+            "Technology Backgrounds",
+            "Neon Effects",
+            "Space Backgrounds",
+            "3D Grid Systems",
+            "Liquid Effects",
+            "Particle Systems",
+            "Holograms",
+            "Quantum Effects",
+            "Game Backgrounds",
+            "UI Interfaces",
+            "Advanced Visual Effects",
+            // فئات إضافية
+            "Scientific Visualizations",
+            "Mathematical Patterns",
+            "Biological Systems",
+            "Chemical Structures",
+            "Astronomical Phenomena",
+          ];
+
+          const resolutions = ["8K", "4K", "2K", "1080p"];
+
+          // منصات متقدمة
+          const advancedPlatformTemplates = {
+            Midjourney: {
+              template: (base, params) =>
+                `${base} --ar ${params.ar} --style ${params.style} --v ${params.version} --quality ${params.quality} --stylize ${params.stylize}`,
+              parameters: {
+                version: ["5.2", "6.0", "niji"],
+                style: ["raw", "photographic", "cinematic"],
+                quality: [1, 2],
+                stylize: [0, 1000],
+              },
+            },
+            "Stable Diffusion": {
+              template: (base, params) =>
+                `${base}, ${params.sampling}, CFG: ${params.cfgScale}, Steps: ${params.steps}, ${params.resolution}, masterpiece, best quality`,
+              parameters: {
+                sampling: ["DPM++ 2M Karras", "Euler A", "DDIM"],
+                cfgScale: [7, 12],
+                steps: [20, 50],
+              },
+            },
+            "DALL-E 3": {
+              template: (base, params) =>
+                `Create: ${base}. Style: ${params.style}. Quality: ${params.quality}. No text, no watermarks.`,
+              parameters: {
+                style: ["natural", "vivid"],
+                quality: ["standard", "hd"],
+              },
+            },
+            "Leonardo AI": {
+              template: (base, params) =>
+                `${base}, high detail, sharp focus, dramatic lighting, trending on artstation, ${params.resolution}. Alchemy: true, Prompt Magic: true`,
+              parameters: {
+                alchemy: [true],
+                promptMagic: [true],
+              },
+            },
+          };
+
+          for (let i = 1; i <= 1000; i++) {
+            const effect = effects[Math.floor(Math.random() * effects.length)];
+            const platform =
+              platforms[Math.floor(Math.random() * platforms.length)];
+            const category =
+              categories[Math.floor(Math.random() * categories.length)];
+            const resolution =
+              resolutions[Math.floor(Math.random() * resolutions.length)];
+
+            // استخدام المولد الفريد لمنع التكرار
+            const basePrompt = this.uniqueGenerator.generateUniquePrompt(
+              effect,
+              resolution
+            );
+
+            const params = {
+              ar: "16:9",
+              style: this.uniqueGenerator.getRandomElement(
+                this.uniqueGenerator.enhancedStyles
+              ),
+              version: "6.0",
+              quality: 2,
+              stylize: Math.floor(Math.random() * 1000),
+              resolution: resolution,
+              sampling: "DPM++ 2M Karras",
+              cfgScale: 7.5,
+              steps: 30,
+              negative:
+                "blurry, low quality, watermark, text, signature, frame, border, cartoon, anime, bad anatomy, deformed, ugly",
+            };
+
+            const platformPrompts = {};
+            platform.forEach((p) => {
+              if (advancedPlatformTemplates[p]) {
+                const template = advancedPlatformTemplates[p];
+                platformPrompts[p] = template.template(basePrompt, params);
+              } else {
+                platformPrompts[p] = basePrompt;
+              }
+            });
+
+            prompts.push({
+              id: i,
+              title: `Unique ${effect.display} ${category.split(" ")[0]} #${i}`,
+              content: basePrompt,
+              platformSpecific: platformPrompts,
+              platforms: platform,
+              effect: effect.name,
+              category: category,
+              resolution: resolution,
+              style: params.style,
+              parameters: params,
+              negativePrompt: params.negative,
+              popularity: Math.floor(Math.random() * 5000),
+              downloads: Math.floor(Math.random() * 1000),
+              rating: (Math.random() * 2 + 3).toFixed(1),
+              createdAt: new Date(
+                2024,
+                Math.floor(Math.random() * 12),
+                Math.floor(Math.random() * 28)
+              ),
+              color: effect.color,
+              bestFor: this.getBestFor(category, effect.name),
+              verified: Math.random() > 0.3,
+              thumbnail: this.generateThumbnailData(effect.color),
+              tags: [
+                effect.name,
+                category.split(" ")[0].toLowerCase(),
+                params.style,
+              ],
+            });
+          }
+
+          console.log(
+            `Generated ${prompts.length} unique prompts with ${this.uniqueGenerator.usedCombinations.size} unique combinations`
+          );
+          return prompts;
+        }
+
+        generateThumbnailData(color) {
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${color}" stop-opacity="0.8"/><stop offset="100%" stop-color="#0a0a15" stop-opacity="1"/></linearGradient></defs><rect width="400" height="120" fill="url(#g)"/></svg>`;
+          return `data:image/svg+xml;base64,${btoa(svg)}`;
+        }
+
+        getBestFor(category, effect) {
+          const bestForMap = {
+            "Technology Backgrounds":
+              "UI designs, presentations, tech websites",
+            "Neon Effects": "Digital art, advertisements, cyberpunk games",
+            "Space Backgrounds": "Sci-fi films, space games, astronomy apps",
+            "3D Grid Systems":
+              "Scientific visualization, engineering, data dashboards",
+            "Liquid Effects": "Animations, branding, fluid simulations",
+            "Particle Systems": "Simulations, research, motion graphics",
+            Holograms: "Emerging tech, AR/VR interfaces, sci-fi",
+            "Quantum Effects": "Education, research, advanced physics",
+            "Game Backgrounds":
+              "Video games, virtual reality, interactive media",
+            "UI Interfaces": "Mobile apps, websites, software interfaces",
+            "Advanced Visual Effects": "Films, media production, commercials",
+            "Scientific Visualizations":
+              "Research papers, educational content, data analysis",
+            "Mathematical Patterns":
+              "Academic publications, mathematical art, algorithms",
+            "Biological Systems":
+              "Medical visualization, biology education, research",
+            "Chemical Structures":
+              "Chemistry education, pharmaceutical research, materials science",
+            "Astronomical Phenomena":
+              "Space agencies, planetariums, educational content",
+          };
+          return (
+            bestForMap[category] || "Various creative and professional projects"
+          );
+        }
+
+        init() {
+          this.renderPrompts();
+          this.bindEvents();
+          this.initParticleSystem();
+          this.updateStats();
+          this.showNotification(
+            "1000+ Unique Professional Prompts Loaded Successfully",
+            "success"
+          );
+        }
+
+        renderPrompts() {
+          const container = document.getElementById("promptsContainer");
+          const emptyState = document.getElementById("emptyState");
+          const promptsToShow = this.filteredPrompts.slice(
+            0,
+            this.visibleCount
+          );
+
+          container.innerHTML = promptsToShow
+            .map(
+              (prompt, index) => `
+                    <div class="prompt-card" data-id="${
+                      prompt.id
+                    }" data-effect="${prompt.effect}" style="animation-delay: ${
+                index * 0.05
+              }s" role="article" aria-label="${prompt.title}">
+                        ${
+                          prompt.thumbnail
+                            ? `<img src="${prompt.thumbnail}" alt="${prompt.title} preview" class="prompt-thumbnail" loading="lazy">`
+                            : ""
+                        }
+                        
+                        <div class="card-header">
+                            <h3 class="prompt-title">${this.escapeHTML(
+                              prompt.title
+                            )}</h3>
+                            <div class="prompt-rating" title="Rating: ${
+                              prompt.rating
+                            }/5.0">
+                                <svg class="ael-icon" ><use href="#ael-star"/></svg>
+                                <span>${prompt.rating}</span>
+                            </div>
+                            <div class="prompt-id">${prompt.id}</div>
+                        </div>
+                        
+                        <div class="prompt-content" tabindex="0" aria-label="Prompt content">${this.escapeHTML(
+                          prompt.content
+                        )}</div>
+                        
+                        <div class="prompt-meta">
+                            <div class="prompt-platforms">
+                                ${prompt.platforms
+                                  .map(
+                                    (platform) =>
+                                      `<span class="platform-badge" title="${platform}">${this.escapeHTML(
+                                        platform
+                                      )}</span>`
+                                  )
+                                  .join("")}
+                            </div>
+                            <div title="Downloads">${this.escapeHTML(
+                              prompt.downloads
+                            )} <svg class="ael-icon" ><use href="#ael-download"/></svg></div>
+                        </div>
+                        
+                        <div class="prompt-bestfor">
+                            <small><strong>Best for:</strong> ${this.escapeHTML(
+                              prompt.bestFor
+                            )}</small>
+                        </div>
+                        
+                        <div class="prompt-stats">
+                            <div class="stat-item">
+                                <svg class="ael-icon" ><use href="#ael-thumbs-up"/></svg>
+                                <span>${prompt.popularity}</span>
+                            </div>
+                            <div class="stat-item">
+                                <svg class="ael-icon" ><use href="#ael-calendar"/></svg>
+                                <span>${prompt.createdAt.toLocaleDateString()}</span>
+                            </div>
+                            ${
+                              prompt.verified
+                                ? '<div class="stat-item" title="Verified prompt"><svg class="ael-icon" ><use href="#ael-badge-check"/></svg> Verified</div>'
+                                : ""
+                            }
+                        </div>
+                        
+                        <div class="prompt-actions">
+                            <button class="action-btn favorite-btn ${
+                              this.favorites.has(prompt.id) ? "active" : ""
+                            }" 
+                                    data-id="${prompt.id}" 
+                                    aria-label="${
+                                      this.favorites.has(prompt.id)
+                                        ? "Remove from"
+                                        : "Add to"
+                                    } favorites">
+                                <i class="${
+                                  this.favorites.has(prompt.id) ? "fas" : "far"
+                                } fa-heart"></i>
+                                ${
+                                  this.favorites.has(prompt.id)
+                                    ? "Saved"
+                                    : "Save"
+                                }
+                            </button>
+                            <button class="action-btn copy-btn" 
+                                    data-prompt="${this.escapeHTML(
+                                      prompt.content
+                                    )}" 
+                                    data-id="${prompt.id}"
+                                    aria-label="Copy prompt to clipboard">
+                                <svg class="ael-icon" ><use href="#ael-copy"/></svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                `
+            )
+            .join("");
+
+          emptyState.style.display =
+            this.filteredPrompts.length === 0 ? "block" : "none";
+
+          const loadBtn = document.getElementById("loadMore");
+          loadBtn.disabled = this.visibleCount >= this.filteredPrompts.length;
+          if (loadBtn.disabled) {
+            loadBtn.innerHTML =
+              '<svg class="ael-icon" ><use href="#ael-check"/></svg> All Prompts Loaded';
+          } else {
+            loadBtn.innerHTML = '<svg class="ael-icon" ><use href="#ael-plus"/></svg> Load More Prompts';
+          }
+
+          this.bindPromptActions();
+        }
+
+        bindPromptActions() {
+          document.querySelectorAll(".copy-btn").forEach((button) => {
+            button.addEventListener("click", async (e) => {
+              const button = e.currentTarget;
+              const promptText = button.getAttribute("data-prompt");
+              const promptId = button.getAttribute("data-id");
+
+              try {
+                await navigator.clipboard.writeText(promptText);
+                this.showNotification("Prompt copied to clipboard!", "success");
+
+                const originalHTML = button.innerHTML;
+                button.classList.add("copied");
+                button.innerHTML = '<svg class="ael-icon" ><use href="#ael-check"/></svg> Copied!';
+
+                setTimeout(() => {
+                  button.classList.remove("copied");
+                  button.innerHTML = originalHTML;
+                }, 2000);
+              } catch (err) {
+                console.error("Failed to copy:", err);
+                this.showNotification("Failed to copy prompt", "error");
+              }
+            });
+          });
+
+          document.querySelectorAll(".favorite-btn").forEach((button) => {
+            button.addEventListener("click", (e) => {
+              const button = e.currentTarget;
+              const promptId = parseInt(button.getAttribute("data-id"));
+
+              if (this.favorites.has(promptId)) {
+                this.favorites.delete(promptId);
+                button.classList.remove("active");
+                button.innerHTML = '<svg class="ael-icon" ><use href="#ael-heart"/></svg> Save';
+                this.showNotification("Removed from favorites", "info");
+              } else {
+                this.favorites.add(promptId);
+                button.classList.add("active");
+                button.innerHTML = '<svg class="ael-icon" ><use href="#ael-heart"/></svg> Saved';
+                this.showNotification("Added to favorites!", "success");
+              }
+
+              this.saveFavorites();
+            });
+          });
+
+          this.lazyLoadThumbnails();
+        }
+
+        bindEvents() {
+          const debouncedSearch = this.debounce((value) => {
+            this.currentFilters.search = value;
+            this.filterPrompts();
+          }, 300);
+
+          document
+            .querySelector(".search-input")
+            .addEventListener("input", (e) => {
+              debouncedSearch(e.target.value);
+            });
+
+          const filters = [
+            "platformFilter",
+            "effectFilter",
+            "resolutionFilter",
+            "sortFilter",
+          ];
+          filters.forEach((filterId) => {
+            document
+              .getElementById(filterId)
+              .addEventListener("change", (e) => {
+                const filterName = filterId.replace("Filter", "");
+                this.currentFilters[filterName] = e.target.value;
+                this.filterPrompts();
+              });
+          });
+
+          document.querySelectorAll(".category-item").forEach((item) => {
+            item.addEventListener("click", (e) => {
+              const category = e.currentTarget.getAttribute("data-category");
+
+              document
+                .querySelectorAll(".category-item")
+                .forEach((i) => i.classList.remove("active"));
+              e.currentTarget.classList.add("active");
+
+              this.currentFilters.category = category;
+              this.filterPrompts();
+            });
+          });
+
+          document.getElementById("loadMore").addEventListener("click", () => {
+            this.visibleCount += 12;
+            this.renderPrompts();
+          });
+
+          const mobileBtn = document.getElementById("mobileMenuBtn");
+          const sidebar = document.getElementById("sidebar");
+
+          mobileBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("active");
+            mobileBtn.innerHTML = sidebar.classList.contains("active")
+              ? '<svg class="ael-icon" ><use href="#ael-times"/></svg> Hide Categories'
+              : '<svg class="ael-icon" ><use href="#ael-bars"/></svg> Show Categories';
+          });
+        }
+
+        debounce(func, wait) {
+          let timeout;
+          return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), wait);
+          };
+        }
+
+        filterPrompts() {
+          const startTime = performance.now();
+
+          this.filteredPrompts = this.prompts.filter((prompt) => {
+            const matchesPlatform =
+              this.currentFilters.platform === "all" ||
+              prompt.platforms.includes(this.currentFilters.platform);
+            const matchesEffect =
+              this.currentFilters.effect === "all" ||
+              prompt.effect === this.currentFilters.effect;
+            const matchesResolution =
+              this.currentFilters.resolution === "all" ||
+              prompt.resolution === this.currentFilters.resolution;
+            const matchesCategory =
+              this.currentFilters.category === "all" ||
+              prompt.category === this.currentFilters.category;
+            const matchesSearch =
+              this.currentFilters.search === "" ||
+              prompt.title
+                .toLowerCase()
+                .includes(this.currentFilters.search.toLowerCase()) ||
+              prompt.content
+                .toLowerCase()
+                .includes(this.currentFilters.search.toLowerCase()) ||
+              prompt.bestFor
+                .toLowerCase()
+                .includes(this.currentFilters.search.toLowerCase());
+
+            return (
+              matchesPlatform &&
+              matchesEffect &&
+              matchesResolution &&
+              matchesCategory &&
+              matchesSearch
+            );
+          });
+
+          this.sortPrompts();
+          this.visibleCount = 12;
+          this.renderPrompts();
+          this.updateStats();
+
+          console.log(
+            `Filtered ${this.prompts.length} prompts in ${(
+              performance.now() - startTime
+            ).toFixed(2)}ms`
+          );
+        }
+
+        sortPrompts() {
+          switch (this.currentFilters.sort) {
+            case "newest":
+              this.filteredPrompts.sort((a, b) => b.id - a.id);
+              break;
+            case "popular":
+              this.filteredPrompts.sort((a, b) => b.popularity - a.popularity);
+              break;
+            case "rating":
+              this.filteredPrompts.sort(
+                (a, b) => parseFloat(b.rating) - parseFloat(a.rating)
+              );
+              break;
+            case "az":
+              this.filteredPrompts.sort((a, b) =>
+                a.title.localeCompare(b.title)
+              );
+              break;
+            case "za":
+              this.filteredPrompts.sort((a, b) =>
+                b.title.localeCompare(a.title)
+              );
+              break;
+          }
+        }
+
+        updateStats() {
+          document.querySelector(
+            ".category-item.active .category-count"
+          ).textContent = this.filteredPrompts.length;
+        }
+
+        escapeHTML(str) {
+          if (!str) return "";
+          const div = document.createElement("div");
+          div.textContent = str;
+          return div.innerHTML;
+        }
+
+        showNotification(message, type = "info") {
+          const notification = document.getElementById("notification");
+          notification.textContent = message;
+          notification.className = `notification ${type}`;
+
+          setTimeout(() => {
+            notification.classList.add("show");
+          }, 100);
+
+          setTimeout(() => {
+            notification.classList.remove("show");
+          }, 3000);
+        }
+
+        saveFavorites() {
+          localStorage.setItem(
+            "aelPromptFavorites",
+            JSON.stringify([...this.favorites])
+          );
+        }
+
+        loadFavorites() {
+          const saved = localStorage.getItem("aelPromptFavorites");
+          return saved ? new Set(JSON.parse(saved)) : new Set();
+        }
+
+        lazyLoadThumbnails() {
+          const images = document.querySelectorAll(".prompt-thumbnail");
+          if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const img = entry.target;
+                  img.src = img.dataset.src || img.src;
+                  observer.unobserve(img);
+                }
+              });
+            });
+            images.forEach((img) => observer.observe(img));
+          }
+        }
+
+        initParticleSystem() {
+          const canvas = document.getElementById("particleCanvas");
+          this.particleSystem = new AdvancedParticleSystem(canvas);
+
+          document.getElementById("playPause").addEventListener("click", () => {
+            this.particleSystem.toggleAnimation();
+            const button = document.getElementById("playPause");
+            const icon = button.querySelector("i");
+            if (this.particleSystem.isRunning) {
+              icon.className = "fas fa-pause";
+              button.innerHTML = `${button.innerHTML.replace(
+                button.textContent,
+                " Pause"
+              )}`;
+            } else {
+              icon.className = "fas fa-play";
+              button.innerHTML = `${button.innerHTML.replace(
+                button.textContent,
+                " Play"
+              )}`;
+            }
+          });
+
+          document
+            .getElementById("changeEffect")
+            .addEventListener("click", () => {
+              this.particleSystem.changeEffect();
+              this.updateParticleStats();
+            });
+
+          document
+            .getElementById("changeColor")
+            .addEventListener("click", () => {
+              this.particleSystem.changeColor();
+              this.updateParticleStats();
+            });
+
+          document
+            .getElementById("resetParticles")
+            .addEventListener("click", () => {
+              this.particleSystem.reset();
+              this.updateParticleStats();
+            });
+
+          setInterval(() => this.updateParticleStats(), 1000);
+          this.updateParticleStats();
+        }
+
+        updateParticleStats() {
+          const stats = this.particleSystem.getStats();
+          document.getElementById(
+            "particleCount"
+          ).textContent = `Particles: ${stats.particleCount}`;
+          document.getElementById(
+            "fpsCounter"
+          ).textContent = `FPS: ${stats.fps}`;
+          document.getElementById(
+            "effectName"
+          ).textContent = `Effect: ${stats.effect}`;
+          document.getElementById(
+            "colorName"
+          ).textContent = `Colors: ${stats.color}`;
+        }
+      }
+
+      // نظام الجسيمات المتقدم
+      class AdvancedParticleSystem {
+        constructor(canvas) {
+          this.canvas = canvas;
+          this.ctx = canvas.getContext("2d", { alpha: false });
+          this.particles = [];
+          this.animationId = null;
+          this.isRunning = true;
+          this.effects = [
+            "neon",
+            "magnetic",
+            "liquid",
+            "cosmic",
+            "wave",
+            "quantum",
+          ];
+          this.currentEffectIndex = 0;
+          this.colors = [
+            { primary: "#00b4db", secondary: "#0083b0", name: "Cyan" },
+            { primary: "#667eea", secondary: "#764ba2", name: "Purple" },
+            { primary: "#f093fb", secondary: "#f5576c", name: "Pink" },
+            { primary: "#4facfe", secondary: "#00f2fe", name: "Blue" },
+            { primary: "#43e97b", secondary: "#38f9d7", name: "Green" },
+            { primary: "#ffd700", secondary: "#ff9d00", name: "Gold" },
+          ];
+          this.colorIndex = 0;
+          this.mouse = { x: -1000, y: -1000, radius: 150 };
+          this.frameCount = 0;
+          this.lastTime = performance.now();
+          this.fps = 0;
+          this.touchPoints = [];
+          this.spatialGrid = new Map();
+
+          this.init();
+        }
+
+        init() {
+          this.resize();
+          this.createParticles();
+          this.animate();
+          this.bindEvents();
+        }
+
+        resize() {
+          const rect = this.canvas.getBoundingClientRect();
+          const dpr = window.devicePixelRatio || 1;
+          this.canvas.width = rect.width * dpr;
+          this.canvas.height = rect.height * dpr;
+          this.ctx.scale(dpr, dpr);
+        }
+
+        createParticles() {
+          this.particles = [];
+          const width = this.canvas.width / (window.devicePixelRatio || 1);
+          const height = this.canvas.height / (window.devicePixelRatio || 1);
+          const count = Math.min(150, Math.floor((width * height) / 6000));
+
+          for (let i = 0; i < count; i++) {
+            this.particles.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 2,
+              vy: (Math.random() - 0.5) * 2,
+              radius: Math.random() * 2 + 1,
+              color: this.colors[this.colorIndex].primary,
+              life: Math.random() * 100,
+              gridX: 0,
+              gridY: 0,
+            });
+          }
+        }
+
+        updateParticles() {
+          const effect = this.effects[this.currentEffectIndex];
+          const width = this.canvas.width / (window.devicePixelRatio || 1);
+          const height = this.canvas.height / (window.devicePixelRatio || 1);
+
+          this.spatialGrid.clear();
+          const gridSize = 50;
+
+          this.particles.forEach((particle) => {
+            particle.gridX = Math.floor(particle.x / gridSize);
+            particle.gridY = Math.floor(particle.y / gridSize);
+
+            this.applyEffect(particle, effect, width, height);
+            this.applyMouseInteraction(particle);
+            this.applyTouchInteraction(particle);
+
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+
+            if (particle.x < 0 || particle.x > width) {
+              particle.vx *= -0.8;
+              particle.x = Math.max(0, Math.min(width, particle.x));
+            }
+            if (particle.y < 0 || particle.y > height) {
+              particle.vy *= -0.8;
+              particle.y = Math.max(0, Math.min(height, particle.y));
+            }
+
+            particle.vx *= 0.98;
+            particle.vy *= 0.98;
+            particle.life += 0.1;
+          });
+        }
+
+        applyEffect(particle, effect, width, height) {
+          switch (effect) {
+            case "magnetic":
+              const centerX = width / 2;
+              const centerY = height / 2;
+              const dx = particle.x - centerX;
+              const dy = particle.y - centerY;
+              const distance = Math.sqrt(dx * dx + dy * dy) || 1;
+              particle.vx += (-dy / distance) * 0.2;
+              particle.vy += (dx / distance) * 0.2;
+              break;
+            case "liquid":
+              particle.vx +=
+                Math.sin(particle.y * 0.01 + particle.life * 0.1) * 0.1;
+              particle.vy +=
+                Math.cos(particle.x * 0.01 + particle.life * 0.1) * 0.1;
+              break;
+            case "cosmic":
+              const angle = particle.life * 0.02;
+              const radius = 2 + Math.sin(particle.life * 0.05) * 1.5;
+              particle.vx += Math.cos(angle) * radius * 0.1;
+              particle.vy += Math.sin(angle) * radius * 0.1;
+              break;
+            case "wave":
+              particle.vy +=
+                Math.sin(particle.x * 0.02 + particle.life * 0.1) * 0.5;
+              break;
+            case "quantum":
+              if (Math.random() < 0.01) {
+                particle.vx = (Math.random() - 0.5) * 10;
+                particle.vy = (Math.random() - 0.5) * 10;
+              }
+              break;
+            default:
+              if (Math.random() < 0.02) {
+                particle.vx += (Math.random() - 0.5) * 0.5;
+                particle.vy += (Math.random() - 0.5) * 0.5;
+              }
+          }
+        }
+
+        applyMouseInteraction(particle) {
+          const dx = particle.x - this.mouse.x;
+          const dy = particle.y - this.mouse.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < this.mouse.radius) {
+            const force = (this.mouse.radius - distance) / this.mouse.radius;
+            particle.vx += (dx / distance) * force * 3;
+            particle.vy += (dy / distance) * force * 3;
+          }
+        }
+
+        applyTouchInteraction(particle) {
+          this.touchPoints.forEach((touch) => {
+            const touchDx = particle.x - touch.x;
+            const touchDy = particle.y - touch.y;
+            const touchDistance =
+              Math.sqrt(touchDx * touchDx + touchDy * touchDy) || 1;
+
+            if (touchDistance < this.mouse.radius) {
+              const touchForce =
+                (this.mouse.radius - touchDistance) / this.mouse.radius;
+              particle.vx += (touchDx / touchDistance) * touchForce * 2;
+              particle.vy += (touchDy / touchDistance) * touchForce * 2;
+            }
+          });
+        }
+
+        draw() {
+          const width = this.canvas.width / (window.devicePixelRatio || 1);
+          const height = this.canvas.height / (window.devicePixelRatio || 1);
+
+          this.ctx.fillStyle = "#0a0a15";
+          this.ctx.fillRect(0, 0, width, height);
+
+          const gridSize = 50;
+          this.spatialGrid.clear();
+
+          this.particles.forEach((p) => {
+            const key = `${p.gridX},${p.gridY}`;
+            if (!this.spatialGrid.has(key)) this.spatialGrid.set(key, []);
+            this.spatialGrid.get(key).push(p);
+          });
+
+          this.drawConnections();
+          this.particles.forEach((p) => this.drawParticle(p));
+        }
+
+        drawConnections() {
+          const maxDistance = 80;
+          let connections = 0;
+
+          this.particles.forEach((p1) => {
+            if (connections > 300) return;
+
+            const nearby = this.getNearbyParticles(p1, 1);
+
+            nearby.forEach((p2) => {
+              if (p1 === p2 || connections > 300) return;
+
+              const dx = p1.x - p2.x;
+              const dy = p1.y - p2.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < maxDistance) {
+                this.ctx.beginPath();
+                this.ctx.moveTo(p1.x, p1.y);
+                this.ctx.lineTo(p2.x, p2.y);
+                this.ctx.strokeStyle = this.colors[this.colorIndex].primary;
+                this.ctx.globalAlpha = (0.8 - distance / maxDistance) * 0.5;
+                this.ctx.lineWidth = 0.5;
+                this.ctx.stroke();
+                this.ctx.globalAlpha = 1;
+                connections++;
+              }
+            });
+          });
+        }
+
+        getNearbyParticles(particle, radius) {
+          const nearby = [];
+          const gridSize = 50;
+
+          for (let x = -radius; x <= radius; x++) {
+            for (let y = -radius; y <= radius; y++) {
+              const key = `${particle.gridX + x},${particle.gridY + y}`;
+              if (this.spatialGrid.has(key)) {
+                nearby.push(...this.spatialGrid.get(key));
+              }
+            }
+          }
+
+          return nearby;
+        }
+
+        drawParticle(particle) {
+          const gradient = this.ctx.createRadialGradient(
+            particle.x,
+            particle.y,
+            0,
+            particle.x,
+            particle.y,
+            particle.radius * 3
+          );
+          gradient.addColorStop(0, this.colors[this.colorIndex].primary);
+          gradient.addColorStop(
+            0.7,
+            this.colors[this.colorIndex].primary + "aa"
+          );
+          gradient.addColorStop(1, "transparent");
+
+          this.ctx.beginPath();
+          this.ctx.arc(
+            particle.x,
+            particle.y,
+            particle.radius * 3,
+            0,
+            Math.PI * 2
+          );
+          this.ctx.fillStyle = gradient;
+          this.ctx.fill();
+        }
+
+        animate() {
+          if (!this.isRunning) return;
+
+          this.frameCount++;
+          const currentTime = performance.now();
+          if (currentTime - this.lastTime >= 1000) {
+            this.fps = Math.round(
+              (this.frameCount * 1000) / (currentTime - this.lastTime)
+            );
+            this.frameCount = 0;
+            this.lastTime = currentTime;
+          }
+
+          this.updateParticles();
+          this.draw();
+
+          this.animationId = requestAnimationFrame(() => this.animate());
+        }
+
+        bindEvents() {
+          this.canvas.addEventListener("mousemove", (e) => {
+            const rect = this.canvas.getBoundingClientRect();
+            this.mouse.x =
+              (e.clientX - rect.left) *
+              (this.canvas.width / rect.width / (window.devicePixelRatio || 1));
+            this.mouse.y =
+              (e.clientY - rect.top) *
+              (this.canvas.height /
+                rect.height /
+                (window.devicePixelRatio || 1));
+          });
+
+          this.canvas.addEventListener("mouseleave", () => {
+            this.mouse.x = -1000;
+            this.mouse.y = -1000;
+          });
+
+          this.canvas.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            this.updateTouchPoints(e);
+          });
+
+          this.canvas.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            this.updateTouchPoints(e);
+          });
+
+          this.canvas.addEventListener("touchend", (e) => {
+            e.preventDefault();
+            this.touchPoints = [];
+          });
+
+          window.addEventListener("resize", () => {
+            this.resize();
+            this.createParticles();
+          });
+        }
+
+        updateTouchPoints(e) {
+          this.touchPoints = [];
+          const rect = this.canvas.getBoundingClientRect();
+
+          for (let i = 0; i < e.touches.length; i++) {
+            const touch = e.touches[i];
+            this.touchPoints.push({
+              x:
+                (touch.clientX - rect.left) *
+                (this.canvas.width /
+                  rect.width /
+                  (window.devicePixelRatio || 1)),
+              y:
+                (touch.clientY - rect.top) *
+                (this.canvas.height /
+                  rect.height /
+                  (window.devicePixelRatio || 1)),
+            });
+          }
+        }
+
+        toggleAnimation() {
+          this.isRunning = !this.isRunning;
+          if (this.isRunning) {
+            this.animate();
+          } else {
+            cancelAnimationFrame(this.animationId);
+          }
+        }
+
+        changeEffect() {
+          if (this.animationId) cancelAnimationFrame(this.animationId);
+          this.currentEffectIndex =
+            (this.currentEffectIndex + 1) % this.effects.length;
+          this.createParticles();
+          if (this.isRunning) this.animate();
+        }
+
+        changeColor() {
+          this.colorIndex = (this.colorIndex + 1) % this.colors.length;
+          this.particles.forEach((particle) => {
+            particle.color = this.colors[this.colorIndex].primary;
+          });
+        }
+
+        reset() {
+          if (this.animationId) cancelAnimationFrame(this.animationId);
+          this.createParticles();
+          if (this.isRunning) this.animate();
+        }
+
+        getStats() {
+          return {
+            particleCount: this.particles.length,
+            fps: this.fps,
+            effect: this.effects[this.currentEffectIndex],
+            color: this.colors[this.colorIndex].name,
+          };
+        }
+      }
+
+      // Initialize application
+      document.addEventListener("DOMContentLoaded", () => {
+        window.enhancedLibrary = new EnhancedPromptLibrary();
+        
+      });
+    </script>
+  </body>
+</html>
