@@ -169,7 +169,7 @@ Or simply open `index.html` in any modern browser — no server required.
 **Created by:** Ayman Elmasry — AEL Digital Studio  
 **Website:** [aymanelmasry.com](https://aymanelmasry.com)  
 **Email:** [info@aymanelmasry.com](mailto:info@aymanelmasry.com)  
-**License:** © 2026 Ayman Elmasry — AEL Digital Studio. All rights reserved.
+**License:** Ayman Elmasry Digital License — Licensed for personal and commercial use with attribution. Unauthorized redistribution is prohibited.
 
 ### Connect
 
