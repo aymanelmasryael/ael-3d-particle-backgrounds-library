@@ -1,7 +1,10 @@
 .DS_Store
 *.log
 node_modules/
-.env
-.env.local
+venv/
 __pycache__/
-*.pyc
+*.png
+*.jpg
+*.mov
+*.af
+*.pdf

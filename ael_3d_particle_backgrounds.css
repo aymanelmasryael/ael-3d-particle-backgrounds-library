@@ -1,13 +1,13 @@
 :root {
         --primary: #0074FF;
         --primary-dark: #005fcc;
-        --secondary: #00b4db;
-        --accent: #667eea;
-        --success: #43e97b;
+        --secondary: #0074FF;
+        --accent: #6C47FF;
+        --success: #00CC88;
         --warning: #ffd700;
-        --danger: #ff4757;
-        --dark: #0a0a0a;
-        --darker: #050505;
+        --danger: #FF4466;
+        --dark: #0B1220;
+        --darker: #0B1220;
         --light: #e0e0e0;
         --lighter: #f8f9fa;
         --card-bg: rgba(30, 30, 46, 0.9);
@@ -31,7 +31,7 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Inter', Geneva, sans-serif;
         background: linear-gradient(
           135deg,
           var(--darker) 0%,
@@ -910,5 +910,5 @@
             overflow: hidden;
         }
         .ael-heart-filled {
-            fill: #ff4757;
+            fill: #FF4466;
         }
